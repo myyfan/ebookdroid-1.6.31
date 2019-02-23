@@ -271,7 +271,7 @@ static void throw_memory_error() { G_THROW(GException::outofmemory); }
 #   ifdef HAVE_STDINCLUDES
 //static void (*old_handler)() = std::set_new_handler(throw_memory_error);
 #   else
-static void (*old_handler)() = set_new_handler(throw_memory_error);
+static void (*old_handler)() = std::set_new_handler(throw_memory_error);
 #   endif // HAVE_STDINCLUDES
 #  endif // ! WIN32
 # endif // !_MSC_VER

@@ -1,5 +1,5 @@
 #include "fitz-internal.h"
-
+#include <zconf.h>
 fz_pixmap *
 fz_keep_pixmap(fz_context *ctx, fz_pixmap *pix)
 {

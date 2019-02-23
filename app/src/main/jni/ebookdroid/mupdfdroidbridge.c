@@ -2,13 +2,13 @@
 
 #include <android/log.h>
 
-#include <javahelpers.h>
+#include "javahelpers.h"
 
 #include <fitz.h>
 #include <mupdf.h>
 #include <muxps.h>
 
-#include <ebookdroid.h>
+#include "ebookdroid.h"
 
 #define FORMAT_PDF 0
 #define FORMAT_XPS 1

@@ -15,6 +15,9 @@ public class EBookDroidLibraryLoader {
         }
         try {
             System.loadLibrary("ebookdroid");
+            System.loadLibrary("djvu");
+            System.loadLibrary("jpeg");
+            System.loadLibrary("mupdf");
             alreadyLoaded = true;
         } catch (Throwable th) {
             LCTX.e("Native library cannot be loaded: ", th);

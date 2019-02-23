@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <stdint.h>
 
-#include <javahelpers.h>
+#include "javahelpers.h"
 
 #ifdef __cplusplus
 #else

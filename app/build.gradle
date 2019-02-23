@@ -7,16 +7,21 @@ android {
         applicationId "org.ebookdroid"
         minSdkVersion 8
         targetSdkVersion 16
+        externalNativeBuild {
+            cmake {
+                //cppFlags "-std=c++11 -frtti -fexceptions"
+                arguments "-DANDROID_STL=c++_shared"
+            }
 
-
-        ndk {
+        ndk{
             abiFilters 'armeabi-v7a','x86'
         }
+    }
 
-      //  ndk {
-      //      // 设置支持的SO库架构
-      //      abiFilters 'armeabi-v7a','x86' //, 'arm64-v8a', //,'armeabi', 'x86_64',
-      //  }
+     //   ndk {
+     //       abiFilters 'armeabi-v7a','x86' //, 'arm64-v8a', //,'armeabi', 'x86_64',
+     //     //  ldLibs "log"
+     //   }
     }
 
     buildTypes {
@@ -31,20 +36,21 @@ android {
       //     }
       // }
     }
-  //  externalNativeBuild {
-  //      cmake {
-  //          path '/src/main/jni/CMakeLists.txt'
-  //          // arguments '-DANDROID_PLATFORM=android-16',
-  //          //         '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared', '-DCMAKE_BUILD_TYPE=Release ..'
-  //          //cFlags "-O3"  //-std=c++11
-  //          //cFlags "-DHAVE_CONFIG_H","-DTHREADMODEL=POSIXTHREADS","-DDEBUGLVL=4","-D__ANDROID__"
-  //      }
-  //  }
-    externalNativeBuild{
-        ndkBuild{
-            path "src/main/jni/Android.mk"
+    externalNativeBuild {
+        cmake {
+            path '/src/main/jni/CMakeLists.txt'
+            //arguments "-DANDROID_STL=c++_shared"
+            // arguments '-DANDROID_PLATFORM=android-16',
+            //         '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared', '-DCMAKE_BUILD_TYPE=Release ..'
+            //cFlags "-O3"  //-std=c++11
+            //cFlags "-DHAVE_CONFIG_H","-DTHREADMODEL=POSIXTHREADS","-DDEBUGLVL=4","-D__ANDROID__"
         }
     }
+  //  externalNativeBuild{
+  //      ndkBuild{
+  //          path "src/main/jni/Android.mk"
+  //      }
+  //  }
 
     lintOptions {
         checkReleaseBuilds false
@@ -56,7 +62,7 @@ android {
     }
 
     dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
-    compile files('libs/jcifs-1.3.17.jar')
+        implementation 'com.android.support:support-v4:18.0.0'
+        implementation files('libs/jcifs-1.3.17.jar')
 }
 }

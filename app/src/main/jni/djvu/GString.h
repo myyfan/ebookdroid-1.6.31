@@ -111,17 +111,19 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#ifdef WIN32
+#ifdef _WIN32
 # include <windows.h>
-# define HAS_WCHAR 1
-# define HAS_WCTYPE 1
-# define HAS_MBSTATE 1
+# ifndef AUTOCONF
+#  define HAS_WCHAR 1
+#  define HAS_WCTYPE 1
+#  define HAS_MBSTATE 1
+# endif
 #endif
 
 #if HAS_WCHAR
-# if !defined(AUTOCONF) || HAVE_WCHAR_H
-#  include <wchar.h>
-# endif
+# include <wchar.h>
+#elif HAVE_WCHAR_H
+# include <wchar.h>
 #endif
 
 #if HAVE_STDINT_H
@@ -129,13 +131,13 @@
 #elif HAVE_INTTYPES_H
 # include <inttypes.h>
 #else
-# ifdef WIN32
+# ifdef _WIN32
 typedef unsigned __int32 uint32_t;
 typedef unsigned __int16 uint16_t;
 # else
 # pragma message("Please verify defs for uint32_t and uint16_t")
-typedef unsigned int   uint32_t; // verify
-typedef unsigned short uint16_t; // verify
+typedef unsigned int   uint32_t // verify
+typedef unsigned short uint16_t // verify
 # endif
 #endif
 
@@ -148,7 +150,7 @@ namespace DJVU {
 
 #if !HAS_MBSTATE
 # ifndef HAVE_MBSTATE_T
-typedef int mbstate_t;
+//typedef int mbstate_t;
 # endif
 #endif
 

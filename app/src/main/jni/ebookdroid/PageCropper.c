@@ -3,7 +3,7 @@
 
 #include <android/log.h>
 
-#include <javahelpers.h>
+#include "javahelpers.h"
 
 #define COLUMN_HALF_HEIGHT 15
 

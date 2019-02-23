@@ -3,7 +3,7 @@
 
 #include <android/log.h>
 
-#include <javahelpers.h>
+#include "javahelpers.h"
 
 /* Debugging helper */
 

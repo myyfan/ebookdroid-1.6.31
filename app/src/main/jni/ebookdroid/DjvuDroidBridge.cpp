@@ -24,7 +24,7 @@
     __android_log_print(ANDROID_LOG_INFO, "EBookDroid.DJVU", args)
 
 
-#include <javahelpers.h>
+#include "javahelpers.h"
 
 void ThrowError(JNIEnv* env, const char* msg)
 {
