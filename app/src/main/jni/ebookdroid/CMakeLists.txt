@@ -31,9 +31,11 @@ set(LOCAL_SRC_FILES
 
 #添加环境变量(可选, added by 编程小翁, 博客园)
 set(CMAKE_C_FLAGS  ${CMAKE_C_FLAGS})
+
 #set(CMAKE_CXX_FLAGS  ${CMAKE_CXX_FLAGS} -DHAVE_INTTYPES_H)
 #set(CMAKE_SHARED_LINKER_FLAGS -llog -lz)
 #4.设置生成so库的名称，并为源文件提供一个相对路径
+link_libraries(djvu jpeg mupdf log)
 add_library( # Sets the name of the library. # 设置库的名称，也就是生成的so名称，在java代码中加载so库需要与此一致
              ebookdroid
              # Sets the library as a shared library.# 将library设置为一个共享库
@@ -45,7 +47,7 @@ add_library( # Sets the name of the library. # 设置库的名称，也就是生
 
              )
 find_library(log_lib log)
-target_link_libraries(ebookdroid djvu mupdf jpeg ${log_lib})
+#target_link_libraries(ebookdroid djvu mupdf jpeg ${log_lib})
 #target_link_libraries(ebookdroid djvu mupdf jpeg ${log_lib})
 
 
